@@ -1503,7 +1503,7 @@ def main():
         """)
         
         # Sample data option
-        st.subheader("🎲 Try with Sample Data")
+        st.subheader("Try with Sample Data")
         col1, col2 = st.columns(2)
         
         with col1:
@@ -1538,7 +1538,7 @@ def main():
                 st.success("✅ Cancer genes dataset ready for download!")
         
         with col2:
-            if st.button("❤️ Load Heart Disease Dataset"):
+            if st.button("❤️ Heart Disease Dataset"):
                 try:
                     # Create a synthetic heart disease dataset
                     np.random.seed(42)
@@ -1631,4 +1631,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
