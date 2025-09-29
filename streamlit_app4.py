@@ -1507,19 +1507,36 @@ def main():
         col1, col2 = st.columns(2)
         
         with col1:
-            if st.button("🏥 Load Breast Cancer Dataset"):
-                from sklearn.datasets import load_breast_cancer
-                data = load_breast_cancer(as_frame=True)
-                sample_df = data.frame
-                
-                csv = sample_df.to_csv(index=False)
+            if st.button("🧬 Load Cancer Genes Dataset"):
+                import pandas as pd
+                import numpy as np
+
+                np.random.seed(42)
+                n = 600
+
+                # 30 kanser geni için veri oluştur
+                genes = ['TP53','BRCA1','BRCA2','EGFR','HER2','MYC','KRAS','BRAF','BCL2','ALK',
+                        'PIK3CA','PTEN','RB1','APC','VHL','ATM','CDKN2A','MLH1','RET','MET',
+                        'CDK4','CDK6','CCND1','CDKN1A','CDKN1B','BAX','BCL2L1','CASP3','CASP8','FAS']
+
+                data = {}
+                for gene in genes:
+                    cancer_vals = np.random.normal(7 if gene in ['MYC','EGFR','HER2'] else 3, 1.5, 240)
+                    normal_vals = np.random.normal(5, 1, 360)
+                    data[gene] = np.round(np.concatenate([cancer_vals, normal_vals]), 2)
+
+                data['diagnosis'] = ['cancer']*240 + ['normal']*360
+                df = pd.DataFrame(data).sample(frac=1, random_state=42)
+
+                # CSV hazırla
+                csv = df.to_csv(index=False)
                 st.download_button(
-                    label="📥 Download Breast Cancer Sample",
+                    label="📥 Download Cancer Genes Dataset",
                     data=csv,
-                    file_name="sample_breast_cancer.csv",
+                    file_name="cancer_genes_pubmed.csv",
                     mime="text/csv"
                 )
-                st.success("✅ Sample data ready for download!")
+                st.success("✅ Cancer genes dataset ready for download!")
         
         with col2:
             if st.button("❤️ Load Heart Disease Dataset"):
