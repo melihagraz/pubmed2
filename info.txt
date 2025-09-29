@@ -1,0 +1,8 @@
+open the terminal type the following #1 then #2
+#1
+cd C:/Users/m/OneDrive/Desktop/other/FeatureAgent/second-new3/second
+#2
+streamlit run streamlit_app4.py
+x
+
+you can go and see it!-> https://fsagent.streamlit.app/
