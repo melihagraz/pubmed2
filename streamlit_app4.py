@@ -1507,9 +1507,8 @@ def main():
         col1, col2 = st.columns(2)
         
         with col1:
-            if st.button("🧬 Load Cancer Genes Dataset"):
-                import pandas as pd
-                import numpy as np
+            if st.button("🧬 Cancer Genes Dataset"):
+
 
                 np.random.seed(42)
                 n = 600
@@ -1632,3 +1631,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
